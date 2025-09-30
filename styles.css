@@ -5,13 +5,16 @@
 }
 
 body {
+    position: relative;
     width: auto;
     height: 100vh;
 }
 
 .grid-container {
-    margin: auto;
-    padding-top: 10vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
     height: 400px;
     width: 400px;
     flex-direction: row;
