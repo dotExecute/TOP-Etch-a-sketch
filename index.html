@@ -13,8 +13,19 @@
     </div>
     
     <div class = "buttons">
-        <button type = "reset">Reset</button>
-        <button type = "button">Resize</button>
+        <button type = "button" class = "reset">Reset</button>
+        <button type = "button" class = "resize">Resize</button>
     </div>
+
+    <dialog class = "resize-dialog">
+        <div class = "info-txt">
+            <p>Select size between 1-100</p>
+            <p class="error-message" style="display: none;">Enter a number you Donut!</p>
+        </div>
+        
+        <input type = "text" class = "size-box">
+
+        <button type = "button" class = "done">Done</button>
+    </dialog>
 </body>
 </html>

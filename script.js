@@ -1,4 +1,11 @@
 const gridContainer = document.querySelector(".grid-container");
+const resetBtn = document.querySelector(".reset");
+const resizeBtn = document.querySelector(".resize");
+const resizeDiaglog = document.querySelector(".resize-dialog");
+const sizeInput = document.querySelector(".size-box");
+const doneBtn = document.querySelector(".done");
+const error = document.querySelector(".error-message");
+
 const gridContHeight = gridContainer.offsetHeight;
 const gridContWidth = gridContainer.offsetWidth;
 
@@ -19,6 +26,7 @@ function createGrid(squares) {
 }
 
 gridContainer.addEventListener("mouseover", (e) => {
+  // if there is a value make it a float if not consider it 0
   let squOpa = parseFloat(e.target.style.opacity) || 0;
   console.log(squOpa);
 
@@ -26,11 +34,64 @@ gridContainer.addEventListener("mouseover", (e) => {
     e.target.style.backgroundColor = "red";
     squOpa += 0.1;
     // restrict opacity from going beyond 1
-    if(squOpa >= 1){
-        squOpa = 1;
+    if (squOpa >= 1) {
+      squOpa = 1;
     }
+    // store it back into real opacity
     e.target.style.opacity = squOpa;
   }
 });
 
-console.log(createGrid(32));
+resetBtn.addEventListener("click", () => {
+  const getAllSquare = document.querySelectorAll(".grid-square");
+
+  getAllSquare.forEach((squares) => {
+    squares.style.backgroundColor = "";
+    squares.style.opacity = "";
+  });
+});
+
+function formValidation(sizeInput) {
+  let inputValue = Number(sizeInput.value);
+
+  //input shouldn't be text or NaN
+  if (isNaN(inputValue)) {
+    console.log("Error element:", error); // Does this log the element or null?
+    console.log("Has show class?", error.classList.contains("show"));
+    error.style.display = "block";
+
+    createGrid(16);
+    return false;
+  }
+
+  error.style.display = "none";
+
+  //input shouldn't be 0 or neg number
+  if (inputValue <= 0) {
+    inputValue = 1;
+  }
+
+  //input should be restricted to 100 max
+  if (inputValue > 100) {
+    inputValue = 100;
+  }
+
+  sizeInput.value = inputValue;
+  console.log(inputValue);
+  createGrid(inputValue);
+  return true;
+}
+
+resizeBtn.addEventListener("click", () => {
+  resizeDiaglog.show();
+});
+
+doneBtn.addEventListener("click", () => {
+  const isValid = formValidation(sizeInput);
+
+  if (isValid) {
+    resizeDiaglog.close();
+  }
+});
+
+console.log(createGrid(16));
