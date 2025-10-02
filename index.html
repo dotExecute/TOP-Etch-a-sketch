@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TOP-Etch-a-sketch</title>
-    <link rel = "stylesheet" href = "styles.css">
-    <script src = "script.js" defer></script>
-</head>
-<body>
-    <div class = "grid-container">
-        
-    </div>
-    
-    <div class = "buttons">
-        <button type = "button" class = "reset">Reset</button>
-        <button type = "button" class = "resize">Resize</button>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="main-div">
+      <div class="grid-container"></div>
+
+      <div class="buttons">
+        <button type="button" class="reset">Reset</button>
+        <button type="button" class="resize">Resize</button>
+      </div>
     </div>
 
-    <dialog class = "resize-dialog">
-        <div class = "info-txt">
-            <p>Select size between 1-100</p>
-            <p class="error-message" style="display: none;">Enter a number you Donut!</p>
-        </div>
-        
-        <input type = "text" class = "size-box">
+    <dialog class="resize-dialog">
+      <div class="info-txt">
+        <p>Select size between 1-100</p>
+        <p class="error-message" style="display: none">
+          Enter a number you Donut!
+        </p>
+      </div>
 
-        <button type = "button" class = "done">Done</button>
+      <input type="text" class="size-box" />
+
+      <button type="button" class="done">Done</button>
     </dialog>
-</body>
+  </body>
 </html>

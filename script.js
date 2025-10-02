@@ -6,12 +6,14 @@ const sizeInput = document.querySelector(".size-box");
 const doneBtn = document.querySelector(".done");
 const error = document.querySelector(".error-message");
 
+// getting the div's height and width set in css
 const gridContHeight = gridContainer.offsetHeight;
 const gridContWidth = gridContainer.offsetWidth;
 
 function createGrid(squares) {
   const totalSquares = squares * squares;
 
+  // making sure the div element is empty before dynamically creating something
   gridContainer.innerHTML = " ";
 
   for (let i = 0; i < totalSquares; i++) {
@@ -52,15 +54,17 @@ resetBtn.addEventListener("click", () => {
 });
 
 function formValidation(sizeInput) {
+  // convert the default string value to number
   let inputValue = Number(sizeInput.value);
 
   //input shouldn't be text or NaN
   if (isNaN(inputValue)) {
-    console.log("Error element:", error); // Does this log the element or null?
-    console.log("Has show class?", error.classList.contains("show"));
+    // enable error message element
     error.style.display = "block";
 
+    // set grid to default
     createGrid(16);
+    // validation not complete
     return false;
   }
 
@@ -83,13 +87,14 @@ function formValidation(sizeInput) {
 }
 
 resizeBtn.addEventListener("click", () => {
-  resizeDiaglog.show();
+  resizeDiaglog.showModal();
 });
 
 doneBtn.addEventListener("click", () => {
   const isValid = formValidation(sizeInput);
 
   if (isValid) {
+    // close modal only if form is successfully validated
     resizeDiaglog.close();
   }
 });
